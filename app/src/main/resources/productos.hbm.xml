@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+
+
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+
+
+<hibernate-mapping>
+
+    <class name="PackageProductos.Productos_Object" table="productos">
+        <id name="id_producto" type="int">
+            <column name="id_producto" />
+            <generator class="native" />
+        </id>
+
+        <property column="identificador" name="identificador" />
+        <property column="nombre" name="nombre" />
+        <property column="precio" name="precio" />
+        <property column="categoria" name="categoria" />
+        <property column="stock" name="stock" />
+        <property column="f_alta" name="f_alta" />
+        
+        <many-to-one name="empresas_id_empresa_p" class="PackageEmpresas.Empresas_Object" column="empresas_id_empresa_p" />
+        
+        
+    </class>
+</hibernate-mapping>
+

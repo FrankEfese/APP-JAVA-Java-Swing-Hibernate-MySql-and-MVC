@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/XML/XMLDocument.xml to edit this template
+-->
+
+
+
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+
+
+<hibernate-mapping>
+
+    <class name="PackageEmpleados.Empleados_Object" table="empleados">
+        <id name="id_empleado" type="int">
+            <column name="id_empleado" />
+            <generator class="native" />
+        </id>
+
+        <property column="dni" name="dni" />
+        <property column="nombre" name="nombre" />
+        <property column="edad" name="edad" />
+        <property column="telefono" name="telefono" />
+        <property column="f_alta" name="f_alta" />
+        
+        <many-to-one name="empresas_id_empresa" class="PackageEmpresas.Empresas_Object" column="empresas_id_empresa" />
+        
+        
+    </class>
+</hibernate-mapping>
+
