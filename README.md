@@ -36,3 +36,9 @@
 
 <h4 align="center">The application uses the Model-View-Controller architecture, which will allow for better organization and scalability for future updates.</h4>
 
+<br>
+
+## <div align="center">Before running the app, make sure to:</div>
+
+<h4 align="center">Execute this script in MySQL to create the tables.</h4>
+
