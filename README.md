@@ -40,5 +40,7 @@
 
 ## <div align="center">Before running the app, make sure to:</div>
 
-<h4 align="center">Execute this script in MySQL to create the tables.</h4>
+<h4 align="center">1-Execute the script from the TABLAS.txt file in MySQL.<br>
+  2-Change the URL, username, and password in the Hibernate XML configuration file in the project to your own credentials. <br>
+3-Change the path in the HibernateUtil class to your own path.</h4>
 
