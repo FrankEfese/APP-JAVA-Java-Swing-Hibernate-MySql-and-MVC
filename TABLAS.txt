@@ -1,0 +1,69 @@
+CREATE TABLE login (
+    id_login INT AUTO_INCREMENT PRIMARY KEY,
+    correo VARCHAR(25) NOT NULL UNIQUE,
+    contraseña VARCHAR(25) NOT NULL
+);
+
+
+CREATE TABLE seguros (
+    id_seguro INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(25) NOT NULL UNIQUE,
+    precio DOUBLE NOT NULL,
+    f_alta DATE NOT NULL
+);
+
+
+CREATE TABLE empresas (
+    id_empresa INT AUTO_INCREMENT PRIMARY KEY,
+    id_empresarial VARCHAR(25) NOT NULL UNIQUE,
+    nombre VARCHAR(25) NOT NULL,
+    ciudad VARCHAR(25) NOT NULL,
+    f_alta DATE NOT NULL,
+    seguros_id_seguro INT DEFAULT NULL,
+    FOREIGN KEY (seguros_id_seguro) REFERENCES seguros(id_seguro)
+    ON DELETE SET NULL
+);
+
+
+CREATE TABLE empleados (
+    id_empleado INT AUTO_INCREMENT PRIMARY KEY,
+    dni VARCHAR(9) NOT NULL UNIQUE,
+    nombre VARCHAR(25) NOT NULL,
+    edad INT NOT NULL CHECK (edad BETWEEN 16 AND 99),
+    telefono VARCHAR(9) NOT NULL UNIQUE,
+    f_alta DATE NOT NULL,
+    empresas_id_empresa INT,
+    FOREIGN KEY (empresas_id_empresa) REFERENCES empresas(id_empresa)
+    ON DELETE SET NULL
+);
+
+
+CREATE TABLE productos (
+    id_producto INT AUTO_INCREMENT PRIMARY KEY,
+    identificador VARCHAR(25) NOT NULL UNIQUE,
+    nombre VARCHAR(25) NOT NULL,
+    precio DOUBLE NOT NULL,
+    categoria VARCHAR(25) NOT NULL,
+    stock INT NOT NULL,
+    f_alta DATE NOT NULL,
+    empresas_id_empresa_p INT,
+    FOREIGN KEY (empresas_id_empresa_p) REFERENCES empresas(id_empresa)
+    ON DELETE CASCADE
+);
+
+
+
+INSERT INTO login (correo , contraseña)  VALUES ("f" , "f");
+SELECT * FROM login;
+
+INSERT INTO seguros (nombre , precio , f_alta)  VALUES ("MUTUA MADRID" , 22.34 , '2024-06-13');
+SELECT * FROM seguros;
+
+INSERT INTO empresas (id_empresarial,nombre, ciudad, f_alta, seguros_id_seguro)  VALUES ('HJ45','MERCADONA', 'MADRID', '2024-07-09', 1);
+SELECT * FROM empresas;
+
+INSERT INTO empleados (dni,nombre, edad,telefono, f_alta, empresas_id_empresa)  VALUES ('23998789Z','Manuel', 33, 696778898,'2024-07-09', 1);
+SELECT * FROM empleados;
+
+INSERT INTO productos (identificador,nombre, precio,categoria,stock, f_alta, empresas_id_empresa_p)  VALUES ('HJJ7809','FORTNITE', 20, 'VIDEOJUEGOS',10,'2024-07-018', 4);
+SELECT * FROM productos;
